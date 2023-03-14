@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reveal Password in JS</title>
+
+	<style type="text/css">
+
+		body{
+			background: #e8e8e8;
+		}
+
+		.form-container{
+			position: absolute;;
+			top: 50%;
+			left:50%;
+			transform: translateX(-50%) translateY(-50%);
+
+			padding: 20px;
+			box-shadow: 0 0 10px 0 #ccc;
+			background: #fff;
+		}
+
+		input[type=text], input[type=password], button{
+			outline: none;
+			border:none;
+			border-bottom: 1px solid #bbb;
+			width: 300px;
+			height: 40px;
+			background: none;
+			color: #555;
+			box-shadow: 5px 3px 20px 0px #ccc;
+			padding-left: 10px;
+		}
+
+		button{
+			width: 100px;
+			margin-top: 20px;
+			cursor: pointer;;
+		}
+
+		button:hover{
+			background: #e0e0e0;
+			color: #000;
+		}
+
+		.passwd-cont{
+			position: relative;
+		}
+
+		.passwd-cont img{
+			position: absolute;
+			top:10px;
+			right: 8px;
+			cursor: pointer;
+			opacity: 0.5;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="form-container">
+		<h3>Show / Hide Password in JS</h3>
+		<input type="text" placeholder="Username" /> <br><br>
+		<div class="passwd-cont">
+			<input id="password" type="password" placeholder="Your password here" />
+			<img id="passwordButton" src="/static/images/eye.png" width="20" />
+		</div>
+		<button>Ok</button>
+		<button>Cancel</button>
+	</div>
+
+	<script type="text/javascript">
+		
+		var button = document.getElementById('passwordButton');
+		button.onmousedown = showPassword;
+		button.onmouseup = hidePassword;
+
+		var password = document.getElementById('password');
+
+		function showPassword() {
+			password.type = 'text';
+		};
+
+		function hidePassword() {
+			password.type = 'password';
+		};
+
+	</script>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			document.querySelector('.preloader').style.display = 'none';
+		};
+	</script> 
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <title>Administrator Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+    <script type="text/javascript">
+        // date & time display IST 
+        function display_c() {
+            var refresh = 1000; // Refresh rate in milli seconds
+            mytime = setTimeout('display_ct()', refresh)
+        }
+
+        function display_ct() {
+            var x = new Date()
+            document.getElementById('ct').innerHTML = x;
+            display_c();
+        }
+    </script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg text-nowrap navbar-light bg-light justify-content-end">
+        <div class="container">
+            <a class="navbar-brand" href="#"><b style="color: orange;">Vaithigam Network Services</b></a>
+
+        </div>
+        </div>
+
+        <body onload=display_ct();>
+            <span id='ct' style=" color: blue; font-weight:bolder; font-size: 16px;"></span>
+    </nav>
+
+    <div class="container md-3">
+        <nav class="navbar navbar-light p-2 gap-5 bg-warning justify-content-end">
+            <a href="index.html" style="color:white">Home</a>
+            <a href="events.php" style="color:white">Events</a>
+            <a href="myblog.php" style="color:white">my Blog</a>
+            <a href="aboutus.php" style="color:white">About Us</a>
+            <a href="contacts.php" style="color:white">Contact Us</a>
+            <a href="/logout" style="color:white">Log Out</a>
+        </nav>
+    <!-- Flashing Message Here  -->
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning alert-dismissible fade show" aria-hidden="false" role="alert">
+                <strong>Success - </strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        <!-- Card Style Starts  -->
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Card User Info Starts -->
+                <div class="card mt-3 text-center">
+                    <img src="/static/images/poster.jpeg" class="card-img-top" alt="...">
+                    <div class="class-header bg-danger text-white">User Profile</div>
+                    <div class="card bg-info text-start">
+                            <p class="card-text" style="color: white;">Logged in as :<br><strong style="color: brown;">{% if session.loggedin %}{{session.fname + " " + session.lname }}{% endif %}</strong></p>
+                            <p class="card-text" style="color: white;">Mobile No : <strong style="color: brown;">{% if session.loggedin %}{{session.mobno}}{% endif %}</strong></p>
+                            <p class="card-text" style="color: white;">Client ID : <strong style="color: brown;">{% if session.loggedin %}{{session.clientID}}{% endif %}</strong></p>
+                            <p class="card-text" style="color: white;">Client Type : <strong style="color: brown;">{% if session.loggedin %}{{session.utype}}{% endif %}</strong></p>
+                            <p class="card-text" style="color: white;">Sakai / Vedam : <strong style="color: brown;">{% if session.loggedin %}{{session.sakai}}{% endif %}</strong></p>
+                            <p class="card-text" style="color: white;">Gothram : <strong style="color: brown;">{% if session.loggedin %}{{session.gothram}}{% endif %}</strong></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card User Info Ends -->
+            <div class="col-md-3" style="width: fit-content;">
+                <div class="card mt-3 text-center">
+                    <div class="card">
+                        <div class="class-header bg-danger text-white">Events Booked</div>
+                        <div class="p-3 border bg-info card-body">
+                            <p class="card-text" style="font-size:3rem">
+                                <strong style="color: blue;"><?php echo $row[0]; ?></strong>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                View in Detail
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-primary" id="exampleModalLabel">Event Booked Details</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-striped">
+                                                <thead class="text-success">
+                                                    <tr>
+
+                                                        <th scope="col">Event ID</th>
+                                                        <th scope="col">Event Date</th>
+                                                        <th scope="col">Event Time</th>
+                                                        <th scope="col">Event Name</th>
+                                                        <th scope="col">Location</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-primary">
+                                                    <?php
+
+                                                    $view = "SELECT tktID,tktdate,tkttime,tktname,tktloc from ems where f_cli_id = '$CID' AND stat = 'B'";
+
+                                                    if (!($result4 =  mysqli_query($conn, $view))) {
+                                                    } else {
+                                                        if (mysqli_num_rows($result4) == 0) {
+                                                            echo '<tr><td colspan="5">No Data Found</td></tr>';
+                                                        } else {
+
+                                                            while ($row = mysqli_fetch_assoc($result4)) {
+                                                                $t = date("h:i A", strtotime($row['tkttime']));
+
+                                                                echo "<tr>
+                                                                        <td>{$row['tktID']}</td>
+                                                                        <td>{$row['tktdate']}</td>
+                                                                        <td>$t</td>
+                                                                        <td>{$row['tktname']}</td>
+                                                                        <td>{$row['tktloc']}</td>
+                                                                    </tr>\n";
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="width: fit-content;">
+                <div class="card mt-3 text-center">
+                    <div class="card">
+                        <div class="class-header bg-danger text-white">Events Accepted</div>
+                        <div class="p-3 border bg-info card-body">
+                            <p class="card-text" style="font-size:3rem">
+                                <strong style="color: orange;"><?php echo $row1[0]; ?></strong>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                View in Detail
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-primary" id="exampleModalLabel">Event Accepted Details</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-striped">
+                                                <thead class="text-success">
+                                                    <tr>
+                                                        <th scope="col">Event ID</th>
+                                                        <th scope="col">Event Date</th>
+                                                        <th scope="col">Event Time</th>
+                                                        <th scope="col">Event Name</th>
+                                                        <th scope="col">Location</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-primary">
+                                                    <?php
+                                                    $view1 = "SELECT tktID,tktdate,tkttime,tktname,tktloc from ems where f_cli_id = '$CID' AND stat = 'A'";
+                                                    if (!($result5 =  mysqli_query($conn, $view1))) {
+                                                    } else {
+                                                        if (mysqli_num_rows($result5) == 0) {
+                                                            echo '<tr><td colspan="5">No Data Found</td></tr>';
+                                                        } else {
+                                                            while ($row1 = mysqli_fetch_assoc($result5)) {
+                                                                echo "<tr><td>{$row1['tktID']}</td><td>{$row1['tktdate']}</td><td>{$row1['tkttime']}</td><td>{$row1['tktname']}</td><td>{$row1['tktloc']}</td></tr>\n";
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="width: fit-content;">
+                <div class="card mt-3 text-center">
+                    <div class="card">
+                        <div class="class-header bg-danger text-white">Events Completed</div>
+                        <div class="p-3 border bg-info card-body">
+                            <p class="card-text" style="font-size:3rem">
+                                <strong style="color: green;"><?php echo $row2[0]; ?></strong>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                View in Detail
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-primary" id="exampleModalLabel">Event Completed Details</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-striped">
+                                                <thead class="text-success">
+                                                    <tr>
+                                                        <th scope="col">Event ID</th>
+                                                        <th scope="col">Event Date</th>
+                                                        <th scope="col">Event Time</th>
+                                                        <th scope="col">Event Name</th>
+                                                        <th scope="col">Location</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-primary">
+                                                    <?php
+                                                    $view2 = "SELECT tktID,tktdate,tkttime,tktname,tktloc from ems where f_cli_id = '$CID' AND stat = 'C'";
+                                                    if (!($result6 =  mysqli_query($conn, $view2))) {
+                                                    } else {
+                                                        if (mysqli_num_rows($result6) == 0) {
+                                                            echo '<tr><td colspan="5">No Data Found</td></tr>';
+                                                        } else {
+                                                            while ($row2 = mysqli_fetch_assoc($result6)) {
+                                                                echo "<tr><td>{$row2['tktID']}</td><td>{$row2['tktdate']}</td><td>{$row2['tkttime']}</td><td>{$row2['tktname']}</td><td>{$row2['tktloc']}</td></tr>\n";
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="width: fit-content;">
+                <div class="card mt-3 text-center">
+                    <div class="card">
+                        <div class="class-header bg-danger text-white">Events Cancelled</div>
+                        <div class="p-3 border bg-info card-body">
+                            <p class="card-text" style="font-size:3rem">
+                                <strong style="color: red;"><?php echo $row3[0]; ?></strong>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                                View in Detail
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-primary" id="exampleModalLabel">Event Cancelled Details</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-striped">
+                                                <thead class="text-success">
+                                                    <tr>
+                                                        <th scope="col">Event ID</th>
+                                                        <th scope="col">Event Date</th>
+                                                        <th scope="col">Event Time</th>
+                                                        <th scope="col">Event Name</th>
+                                                        <th scope="col">Location</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="text-primary">
+                                                    <?php
+                                                    $view3 = "SELECT tktID,tktdate,tkttime,tktname,tktloc from ems where f_cli_id = '$CID' AND stat = 'X'";
+                                                    if (!($result7 =  mysqli_query($conn, $view3))) {
+                                                    } else {
+                                                        if (mysqli_num_rows($result7) == 0) {
+                                                            echo '<tr><td colspan="5">No Data Found</td></tr>';
+                                                        } else {
+                                                            while ($row3 = mysqli_fetch_assoc($result7)) {
+                                                                echo "<tr><td>{$row3['tktID']}</td><td>{$row3['tktdate']}</td><td>{$row3['tkttime']}</td><td>{$row3['tktname']}</td><td>{$row3['tktloc']}</td></tr>\n";
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Card Style Ends  -->
+
+
+
+
+    <!-- Bootstrap Script Starts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Script Starts -->
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/fontawesome/free/css/all.css" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-1 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+                                    <div class="text-center">
+                                        <img src="/static/images/aum_16.jpg" style="width: 70px;" alt="logo">
+                                        <h4 class="mt-1 mb-5 pb-1" style="color:blue;">Welcome to Vaithigam Network
+                                            Services</h4>
+                                    </div>
+                                    <form action="{{url_for('login')}}" name="login" method="post" id="login">
+                                        <p style="color: blue;">Existing Users Login-In Here</p>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" name="mobno" id="form2Example11" class="form-control"
+                                                placeholder="Mobile Number" autofocus/>
+                                        </div>
+                                        <div class="form-outline mb-4 passwd-cont">
+                                            <input type="password" name="password" id="password" 
+                                                class="form-control" placeholder="Password"/>
+			                                <img id="passwordButton" src="/static/images/eye.png" width="20" />
+                                        </div>
+                                        <div class="text-center mb-5">
+                                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                                type="submit" name="login" id="liveToastBtn">Log in</button>
+                                        </div>
+                                            <div class="d-flex align-items-center justify-content-center">Click Here :<a class="text-muted" href="#!">Forgot password?</a></div>
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <p class="mb-0 me-2">Don't have an account?</p>
+                                            <a href="{{url_for('signup')}}">Create new</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <img src="/static/images/poster2.jpeg" alt="kamatchi" />
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4" style="text-align: center;">What we Do.</h4>
+                                    <h3 class="mb-4" style="text-align: center;">Service our Moto.</h3>
+                                    <p class="small mb-0">All Vaidikas are fully Qualified to perform
+                                        all Hindu Events. <br>Our Vaithikas will charge you a very nominal
+                                        rate compared others. <br>We do best Catering Service according to the
+                                        Client Satisfaction.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="toast-container position-fixed top-50 start-50 translate-middle">
+        <div id="liveToast" class="toast text-bg-danger " role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="1500">
+            <div class="toast-header">
+                <img src="/static/images/aum_18.ico" style="width: 40px; height: 40px;" class="rounded me-2" alt="Om">
+                <strong class="me-auto" style="color: blue;">Vaithigam Network
+                    Services</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body align-items-center">
+                Sorry, Invalid Mobile No. or Password !!!
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+            const toastTrigger = document.getElementById('liveToastBtn')
+            const toastLiveExample = document.getElementById('liveToast')
+            const toast = new bootstrap.Toast(toastLiveExample)
+            toastTrigger.addEventListener('click', async (event) => 
+            {
+                 event.preventDefault();
+                const formData = new FormData(document.querySelector('form'));
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    body: formData
+                }).then((response) => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    toast.show();
+                }
+            });
+            });
+    </script>
+    <script type="text/javascript">
+        var button = document.getElementById('passwordButton');
+        button.onmousedown = showPassword;
+        button.onmouseup = hidePassword;
+        var password = document.getElementById('password');
+        function showPassword() {
+            password.type = 'text';
+        };
+
+        function hidePassword() {
+            password.type = 'password';
+        };
+        </script>
+        <!-- <script type="text/javascript">
+            window.onload = function () {
+                document.querySelector('.preloader').style.display = 'none';
+            };
+        </script> -->
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/jqueryrc-ui-themes-1.13.0/themes/sunny/jquery-ui.min.css">
+    <script src="/static/jqueryrc-ui-1.13.0/external/jquery/jquery.js"></script>
+    <script src="/static/jqueryrc-ui-1.13.0/jquery-ui.js"></script>
+
+    <script>
+        $(function(){
+            $("#dob").datepicker({
+                altField: "alternate",
+                dateFormat:'yy-mm-dd',
+                changeMonth:true,
+                changeYear:true,
+                yearRange: '1900:+0',
+                todayHighlight:true,
+                showWeek:true,
+                maxDate: '0'
+            }).datepicker('setDate','0');
+        });
+    </script>
+
+    <!-- <script>
+        $( function() {
+            $( "#gothram" ).selectmenu();
+        });
+    </script> -->
+
+    <title>Sign-UP Form</title>
+</head>
+<body >
+    <div id ="header">
+        <img src = "/static/images/aum_18.ico" alt="logo"/>
+        <h1>Welcome to Vaithigam Network</h1>
+        <h2>Event Management Services</h2>
+    </div>
+    
+    <form action="{{url_for('uins')}}" method="POST"> 
+        <table align="center" border="3" frame="box"> 
+            <th colspan="3" align="center" bgcolor="yellow" style="color: blue;">New User Registration Form</th>
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">User Type :</td>       
+                    <td colspan="2">
+                        <select name="utype" id="clitype" required aria-placeholder="User Type" autofocus>
+                          <option selected hidden value="">Select User Type</option>
+                          <option value="Client">Client</option>
+                          <option value="Vaithigar">Vaithigar</option>                  
+                        </select>
+                    </td>
+                </tr>
+                
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Register Mobile No :</td>
+                     <td><input type="text" name="mobno" id="mobno" maxlength="10" required placeholder="Register Mobile No." pattern="[0-9]{10}">
+                    {% if error %}
+                        <div class="error">{{ error }}</div>
+                    {% endif %}
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">First Name :</td>
+                    <td><input type="text" name="fname" pattern="[a-zA-Z\s]+" id="fname" maxlength="45" required placeholder="First Name/Sarma"></td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Last Name :</td>
+                    <td><input type="text" name="lname" id="lname" maxlength="45" placeholder="Last Name (if any)"></td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Password :</td>
+                    <td><input type="text" name="pwd" id="pass" pattern="^\S{4,}$" maxlength="8" required placeholder="Password"></td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Date of Birth :</td>
+                    <td><input type="text" name="dob" id="dob" required placeholder="Date of Birth" ></td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Land Line No. :</td>
+                    <td><input type="text" name="contno" id="contno" maxlength="11" placeholder="Landline No.(if any)"></td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Sakai/Vedam :</td>       
+                    <td colspan="2">
+                        <select name="sakai" id="sakai"   required>
+                          <option selected hidden value="">Select Sakai Type</option>
+                          <option value="Rig">Rig</option>
+                          <option value="Yejur">Yejur</option>
+                          <option value="Samam">Samam</option>
+                          <option value="Atharvanam">Atharvanam</option>                    
+                        </select>
+                    </td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Gothram :</td>
+                    <!-- <td><input type="text" name="gothram" id="gothram" maxlength="15" required placeholder="Gothram"></td> -->
+                    <td colspan="2">
+                        <select name="gothram" id="gothram"   required>
+                            <option selected hidden value="">Select Your Gothram</option>
+                                <option value="Atreya/Attri">Atreya/Attri</option>
+                                    <option value="Angirasa">Angirasa</option>
+                                    <option value="Alamban/Alambayin/Alambain">Alamban/Alambayin/Alambain</option>
+                                    <option value="Bali">Bali</option>
+                                    <option value="Bakshi">Bakshi</option>
+                                    <option value="Bhalki">Bhalki</option>
+                                    <option value="Bharadvaja">Bharadvaja</option>
+                                    <option value="Bhargava">Bhargava</option>
+                                    <option value="Chandrayana">Chandrayana</option>
+                                    <option value="Charora">Charora</option>
+                                    <option value="Chyavana">Chyavana</option>
+                                    <option value="Dalabhya">Dalabhya</option>
+                                    <option value="Dhananjaya">Dhananjaya</option>
+                                    <option value="Garga">Garga</option>
+                                    <option value="Gautama">Gautama Maharishi</option>
+                                    <option value="Harita">Harita</option>
+                                    <option value="Jamadagni">Jamadagni</option>
+                                    <option value="Kankar">Kankar</option>
+                                    <option value="Kapil">Kapil</option>
+                                    <option value="Kashyapa">Kashyapa</option>
+                                    <option value="Kaundinya">Kaundinya</option>
+                                    <option value="Katyayana">Katyayana</option>
+                                    <option value="Kaushik">Kaushik</option>
+                                    <option value="Kutsa">Kutsa</option>
+                                    <option value="Maitreya">Maitreya / Mitra</option>
+                                    <option value="Mandavya">Mandavya</option>
+                                    <option value="Mudgal">Mudgal</option>
+                                    <option value="Parashar">Parashar</option>
+                                    <option value="Pourugutsa">Pourugutsa</option>
+                                    <option value="Sankrithi">Sankrithi</option>
+                                    <option value="Savarni">Savarni</option>
+                                    <option value="Shandilya">Shandilya</option>
+                                    <option value="Sharma">Sharma</option>
+                                    <option value="Shunak">Shunak</option>
+                                    <option value="Soral">Soral</option>
+                                    <option value="Srivatsa">Srivatsa</option>
+                                    <option value="Suryadhwaja">Suryadhwaja</option>
+                                    <option value="Upadhyay">Upadhyay</option>
+                                    <option value="Valmiki">Valmiki</option>
+                                    <option value="Vashistha">Vashistha</option>
+                                    <option value="Vasudev">Vasudev</option>
+                                    <option value="Vatsa">Vatsa</option>
+                                    <option value="Vishnu">Vishnu</option>
+                                    <option value="Vishnuvridha/Vishnuvardhasa">Vishnuvridha/Vishnuvardhasa</option>
+                                    <option value="Viswamitra">Viswamitra</option>
+                                    <option value="Yaska">Yaska</option>
+                                    <option value="Chalondiya">Chalondiya</option>
+                                    <option value="Willyesh">Willyesh</option>
+                                    <option value="Others">Others</option>                  
+                        </select>
+                    </td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Birth Star :</td>
+                    <td colspan="2">
+                        <select name="birthstar" id="star"required>
+                          <option selected hidden value="">Select Star Type</option>
+                          <option value="Ashwini">01-Ashwini/அஸ்வினி/(अश्विनि)</option>
+                          <option value="Bharani">02-Bharani/பரணி/(भरणी)</option>
+                          <option value="Krittika">03-Krittika/கார்த்திகை/(कृत्तिका)</option>
+                          <option value="Rohini">04-Rohini/ரோகிணி/(रोहिणी)</option>
+                          <option value="Mrigashīrsha">05-Mrigashīrsha/மிருகசீரிஷம்/(मृगशीर्ष)</option>
+                          <option value="Ārdrā">06-Ārdrā/திருவாதிரை/(आर्द्रा)</option>
+                          <option value="Punarvasu">07-Punarvasu/புனர்பூசம்/(पुनर्वसु)</option>
+                          <option value="Pushya">08-Pushya/பூசம்/(पुष्य)</option>
+                          <option value="Āshleshā">09-Āshleshā/ஆயில்யம்/(अश्लेषा)</option>
+                          <option value="Maghā">10-Maghā/மகம்/(मघा)</option>
+                          <option value="Pūrva Phalgunī">11-Pūrva Phalgunī/பூரம்/(पूर्व फल्गुनी)</option>
+                          <option value="Uttara Phalgunī">12-Uttara Phalgunī/உத்திரம்/(उत्तर फल्गुनी)</option>
+                          <option value="Hasta">13-Hasta/ஹஸ்தம்/(हस्त)</option>
+                          <option value="Chitra">14-Chitra/சித்திரை/(चित्रा)</option>
+                          <option value="Svātī">15-Svātī/சுவாதி/(स्वाति)</option>
+                          <option value="Viśākhā">16-Viśākhā/விசாகம்/(विशाखा)</option>
+                          <option value="Anurādhā">17-Anurādhā/அனுசம்/(अनुराधा)</option>
+                          <option value="Jyeshtha">18-Jyeshtha/கேட்டை/(ज्येष्ठा)</option>
+                          <option value="Mula">19-Mula/மூலம்/(मूल)</option>
+                          <option value="Pūrva Āshādhā">20-Pūrva Āshādhā/பூராடம்/(पूर्व आषाढ़)</option>
+                          <option value="Uttara Āṣāḍhā">21-Uttara Āṣāḍhā/உத்திராடம்/(उत्तर आषाढ़)</option>
+                          <option value="Śrāvaṇa">22-Śrāvaṇa/திருவோணம்/(श्र‌ावण)</option>
+                          <option value="Śrāviṣṭha">23-Śrāviṣṭha/Dhanishta/அவிட்டம்/(श्रविष्ठा)</option>
+                          <option value="Shatabhisha">24-Shatabhisha/சதயம்/(शतभिषा)</option>
+                          <option value="Pūrva Bhādrapadā">25-Pūrva Bhādrapadā/பூரட்டாதி/(पूर्व भाद्रपद)</option>
+                          <option value="Uttara Bhādrapadā">26-Uttara Bhādrapadā/உத்திரட்டாதி/(उत्तर भाद्रपद)</option>
+                          <option value="Revati">27-Revati/ரேவதி/(रेवती)</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Address :</td>
+                    <td><input type="text" name="add1" id="add1" maxlength="100"  required placeholder="Address"></td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">City :</td>
+                    <td><input type="text" name="city" id="city" maxlength="45" required placeholder="Name of City"></td>
+                </tr>
+
+                <tr><td align="right" bgcolor="brown" style="color: ghostwhite;">Pincode :</td>
+                    <td><input type="text" name="pincode" id="pincode" maxlength="6" required placeholder="Pincode"></td>
+                </tr>
+
+                <tr><td colspan="3" align="center" bgcolor="yellow"><input type="submit" name="insert" id="submit" value="Register Here">
+                                                                    <a href="{{url_for('login')}}"><input type="button" name="back" id="back" value="Home"></a>
+                                                                </td></tr>
+
+        </table>
+    </form>
+</body>
+</html>

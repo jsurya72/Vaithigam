@@ -1,0 +1,156 @@
+<!-- <?php
+include 'dbconn.php';
+session_start();
+if (isset($_POST['tkt'])) {
+    $tktdate =  $_POST['tktdate'];
+    $tkttime =  $_POST['tkttime'];
+    $tktname =  $_POST['tktname'];
+    $tktloc =  $_POST['tktloc'];
+    $stat = $_POST['stat'];
+    // $clientID= $_SESSION['clientID'];
+
+    $query = "INSERT INTO ems(tktdate,tkttime,tktname,tktloc,f_cli_id,stat) VALUES ('" . $_POST["tktdate"] . "','" . $_POST["tkttime"] . "','" . $_POST["tktname"] . "','" . $_POST["tktloc"] . "','" . $_SESSION['clientID'] . "','" . $_POST["stat"] = "B" . "')";
+
+    // check if mysql query successful
+
+    if ($conn->query($query) === TRUE) {
+        $message = "New Record Added";
+        echo "<script>alert('$message');window.location.replace('events.php')</script>";
+    } else {
+        $message = "Not Inserted";
+        echo "<script type= 'text/javascript'>alert('Error: " . $query . "<br>" . $conn->error . "');</script>";
+        //echo "<script>alert('$message');window.location.replace('index.html')</script>";
+    }
+
+    mysqli_close($conn);
+}
+
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management Services</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="stylesheet" href="/static/jqueryrc-ui-themes-1.13.0/themes/sunny/jquery-ui.min.css">
+    <script src="/static/jqueryrc-ui-1.13.0/external/jquery/jquery.js"></script>
+    <script src="/static/jqueryrc-ui-1.13.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <script>
+        $(function() {
+            $("#dt").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+                todayHighlight: true,
+                <!-- yearRange: '-0:+0', -->
+                minDate: new Date(),
+                showWeek: true,
+                maxDate: '2W'
+            }).datepicker('setDate', '0');
+            $("#time").timepicker({
+                timeFormat: 'hh:mm p',
+                interval: 30,
+                minTime: '04',
+                maxTime: '11:59pm',
+                defaultTime: '04',
+                startTime: '00:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <img src="/static/images/aum_18.jpg" alt="logo" />
+        <h1>Welcome to Vaithigam Network</h1>
+        <h2>Event Management Services</h2>
+    </div>
+
+    <div id="welcome">
+            <h2>Client Name :{% if session.loggedin %}{{session.fname + " " + session.lname }}{% endif %}
+                || Mobile No.:{% if session.loggedin %}{{session.mobno}}{% endif %}
+                || Client ID :{% if session.loggedin %}{{session.clientID}}{% endif %}
+                || User Type :{% if session.loggedin %}{{session.utype}}{% endif %}</h2>
+    </div>
+
+    <div class="row">
+        <div class="main">
+            <p>
+            <h3>Raghu Kalam Timings</h3>
+            <ol>
+                <li>Sunday : 04:30 - 06:00 PM</li>
+                <li>Monday : 07:30 - 09:00 AM</li>
+                <li>Tuesday : 03:00 - 04:30 PM</li>
+                <li>Wednesday : 12:00 - 01:30 PM</li>
+                <li>Thrusday : 01:30 - 03:00 PM</li>
+                <li>Friday : 10:30 - 12:00 AM</li>
+                <li>Saturday : 09:00 - 10:30 AM</li>
+                </p>
+            </ol>
+            <p>
+            <h3>Yamagandam Timings</h3>
+            <ol>
+                <li>Sunday : 12:00 - 01:30 PM</li>
+                <li>Monday : 10:30 - 12:00 AM</li>
+                <li>Tuesday : 09:00 - 10:30 AM</li>
+                <li>Wednesday : 07:30 - 09:00 AM</li>
+                <li>Thrusday : 06:00 - 07:30 PM</li>
+                <li>Friday : 03:00 - 04:30 PM</li>
+                <li>Saturday : 01:30 - 03:00 PM</li>
+            </ol>
+            </p>
+        </div>
+        <form action="{{url_for('eins')}}" method="post">
+            <div class="main">
+                <h3>Event Registration</h3>
+                <table border="1px">
+                    <tr>
+                        <td align="right" style="color: blue; font-weight: bold;">Event Date :</td>
+                        <td><input type="text" id="dt" name="tktdate"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" style="color: blue; font-weight: bold;">Event Time :</td>
+                        <td><input type="text" id="time" name="tkttime"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" style="color: blue; font-weight: bold;">Event Name :</td>
+                        <td><input type="text" id="name" name="tktname"></td>
+                    </tr>
+                    <tr>
+                        <td align="right" style="color: blue; font-weight: bold;">Location :</td>
+                        <td><input type="text" id="loc" name="tktloc"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" value="Book an Event" name="eins" id="submit">
+                            <input type="button" value="Go Back" name="back" id="back" onclick="goBack()">
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    </form>
+
+
+    <div id="footer">
+        @copy; 2021 Vaithigam.space. All Right Reserved.
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+/*=========== Layout of Body Section ===========*/
+body{
+    background-color: aqua;
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+/*===========Layout of Header Section ===========*/
+#header{
+    background-color:orange;
+    margin: 5px;
+    height: 116px;
+    background-image: url(/static/images/poster.jpeg);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    height: 116px;
+    border-radius: 5px;          
+}
+
+#header img {
+    float: left;
+    width: 105px;
+    height: 116px;
+    border-radius: 5px;
+}
+
+.div.container{
+    border: 1px solid white;
+}
+
+.bg{
+    
+    padding: 10px;
+    background-color: yellow;
+}
+
+.grid-layout.container{
+    border: 1px solid red !important;
+}
+#welcome{
+    background-color: black;
+    margin: 5px;
+    height: 30px;
+    border-radius: 5px;
+    font: 15px arial;
+    float:inline-start;
+    color: white;
+    text-decoration: 0;
+}
+/*===========Layout of Menu Navigation Section ===========*/
+#navbar{
+    background-color: yellow;
+    margin: 5px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: right;
+    overflow: hidden;
+}
+
+#navbar a{
+    float: inline-start;
+            font: 20px arial;
+            display:box;
+            color:chartreuse;
+            text-align: center;
+            padding: 0px 16px 20px 5px;
+            font-weight: bold;
+            text-decoration: 0;
+}
+
+#navbar a:hover{
+    background-color: #ddd;
+            color: rgb(42, 8, 238);
+}
+.main{
+    float: left;
+    background-color:yellow;
+    margin: 5px;
+    height : 340px;
+    border-radius: 15px;
+    padding: 15px;
+    overflow: hidden;
+    
+}
+    .row after{
+        
+        content: "";
+        display: table;
+        clear:both;
+    }
+    
+h1{
+    font-size: 25px;
+    color:white;
+    margin: 5px;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+h2{
+    font-size: 16px;
+    color:white;
+    margin: 0px;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+h3{
+    font-size: 120%;
+    color:blue;
+}
+
+.box1{
+    background-color: blue;
+    text-align: center;
+    color: red;
+    width: 100px;
+    height: 100px;
+}
+.flexcontainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.alert {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+/*===========Layout of Footer Section ===========*/
+#footer{
+    background-color:orange;
+    margin: 5px;
+    height: 70px;
+    border-radius: 15px; 
+    text-align: right;
+    color: white ;
+    clear: both;
+}
+
+/*===========Layout of New Login Section ===========*/
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fccb90;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom-2 {
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
+    }
+}
+
+.table{
+    border-spacing: 0;
+    /* margin: 1rem; */
+    background-color:palegreen;
+    text-align: center;
+    font-weight: 600;
+}
+
+.table__row:nth-child(even){
+    background-color: yellow;
+    color: blue;
+    font-weight: 800;
+    text-align: center;
+}
+
+.table__row:nth-child(odd) {
+    background-color: orange;
+    color: white;
+    font-weight: 800;
+    text-align: center;
+}
+.table__header{
+    background-color: blue;
+    justify-content: center;
+    color: white;
+}
+
+.table__cell{
+    padding: 3px;
+}
+.passwd-cont {
+    position: relative;
+}
+
+.passwd-cont img {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.left{
+    float: left;
+    margin: 10px;
+    color: darkblue;
+    font-weight: 800;
+}
+.right{
+    float: right;
+    margin: 10px;
+    color: darkred;
+    font-weight: 700;
+}
+

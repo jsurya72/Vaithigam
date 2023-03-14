@@ -1,0 +1,28 @@
+{% macro heading_row(heading) %}
+    <tr class="table__header">
+        {% for header in heading %}
+        <th class="table__cell">{{ header }}</th>
+        {% endfor %}
+    </tr>
+{% endmacro%}
+
+{% macro data_rows(result) %}
+    {% for row in result %}
+        <tr class="table__row">
+                    <td class="table__cell">{{ row[0] }}</td>
+                    <td class="table__cell">{{ row[1] }}</td>
+                    <td class="table__cell">{{ row[2] }}</td>
+                    <td class="table__cell">{{ row[3] }}</td>
+                    <td class="table__cell">{{ row[4] }}</td>
+                    <!-- <td class="table__cell"><button class="button__cell">Accept</button></td> -->
+        </tr>
+    {% endfor %}
+{% endmacro %}
+
+{% macro data_table(heading, result)%}
+<table class="table">
+    {{ heading_row(heading) }}
+    {{ data_rows(result) }}
+
+</table>
+{% endmacro%}

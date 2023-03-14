@@ -1,0 +1,25 @@
+Booked Event 
+Trigger Name: trig_ins_ems 
+Trigger Table: ems
+Trigger Time: After
+Trigger Event: Insert
+
+INSERT INTO ems_dump(tktID,tktdate,tkttime,tktname,tktloc,f_cli_id,
+                     v_cli_id,currenttime,stat)
+values (new.tktID,new.tktdate,new.tkttime,new.tktname,new.tktloc,
+        new.f_cli_id,new.v_cli_id,new.currenttime,new.stat)
+
+Accepted Event Trigger
+======================================
+Accept Event 
+Trigger Name: trig_upd_ems 
+Trigger Table: ems
+Trigger Time: After
+Trigger Event: Update
+
+INSERT INTO ems_dump
+(tktID, tktdate, tkttime, tktname, tktloc, f_cli_id, 
+	v_cli_id, currenttime, stat)
+    VALUES (OLD.tktID, OLD.tktdate, OLD.tkttime, OLD.tktname,
+    OLD.tktloc, OLD.f_cli_id, NEW.v_cli_id, NEW.currenttime, NEW.stat)
+===================================

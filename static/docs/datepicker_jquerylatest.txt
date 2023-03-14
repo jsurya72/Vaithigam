@@ -1,0 +1,67 @@
+jQuery
+3.x snippet:
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+jQuery UI
+snippet:
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+base: http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css
+black-tie: http://code.jquery.com/ui/1.9.1/themes/black-tie/jquery-ui.css
+blitzer: http://code.jquery.com/ui/1.9.1/themes/blitzer/jquery-ui.css
+cupertino: http://code.jquery.com/ui/1.9.1/themes/cupertino/jquery-ui.css
+dark-hive: http://code.jquery.com/ui/1.9.1/themes/dark-hive/jquery-ui.css
+dot-luv: http://code.jquery.com/ui/1.9.1/themes/dot-luv/jquery-ui.css
+eggplant: http://code.jquery.com/ui/1.9.1/themes/eggplant/jquery-ui.css
+excite-bike: http://code.jquery.com/ui/1.9.1/themes/excite-bike/jquery-ui.css
+flick: http://code.jquery.com/ui/1.9.1/themes/flick/jquery-ui.css
+hot-sneaks: http://code.jquery.com/ui/1.9.1/themes/hot-sneaks/jquery-ui.css
+humanity: http://code.jquery.com/ui/1.9.1/themes/humanity/jquery-ui.css
+le-frog: http://code.jquery.com/ui/1.9.1/themes/le-frog/jquery-ui.css
+mint-choc: http://code.jquery.com/ui/1.9.1/themes/mint-choc/jquery-ui.css
+overcast: http://code.jquery.com/ui/1.9.1/themes/overcast/jquery-ui.css
+pepper-grinder: http://code.jquery.com/ui/1.9.1/themes/pepper-grinder/jquery-ui.css
+redmond: http://code.jquery.com/ui/1.9.1/themes/redmond/jquery-ui.css
+smoothness: http://code.jquery.com/ui/1.9.1/themes/smoothness/jquery-ui.css
+south-street: http://code.jquery.com/ui/1.9.1/themes/south-street/jquery-ui.css
+start: http://code.jquery.com/ui/1.9.1/themes/start/jquery-ui.css
+sunny: http://code.jquery.com/ui/1.9.1/themes/sunny/jquery-ui.css
+swanky-purse: http://code.jquery.com/ui/1.9.1/themes/swanky-purse/jquery-ui.css
+trontastic: http://code.jquery.com/ui/1.9.1/themes/trontastic/jquery-ui.css
+ui-darkness: http://code.jquery.com/ui/1.9.1/themes/ui-darkness/jquery-ui.css
+ui-lightness: http://code.jquery.com/ui/1.9.1/themes/ui-lightness/jquery-ui.css
+vader: http://code.jquery.com/ui/1.9.1/themes/vader/jquery-ui.css
+
+
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- jQuery timepicker library -->
+<link rel="stylesheet" href="jquery-timepicker/jquery.timepicker.min.css">
+<script src="jquery-timepicker/jquery.timepicker.min.js"></script>
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/south-street/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

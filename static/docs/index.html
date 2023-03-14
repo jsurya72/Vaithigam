@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link  rel="stylesheet" href="/static/css/styles.css">
+    <title>Vaithigam Network Services</title>
+    <script type="text/javascript">
+        function display_c() {
+            var refresh = 1000; // Refresh rate in milli seconds
+            mytime = setTimeout('display_ct()', refresh)
+        }
+
+        function display_ct() {
+            var x = new Date()
+            document.getElementById('ct').innerHTML = x;
+            display_c();
+        }
+    </script>
+    
+</head>
+
+<body>
+        <div id ="header">
+        <img src = "/static/images/aum_18.jpg" alt="logo"/>
+        <h1>Welcome to Vaithigam Network</h1>
+        <h2>Event Management Services</h2>
+    </div>
+
+    <div id ="navbar">
+        <body onload=display_ct();>
+        <span id='ct' style=" color: blue; font-weight:bolder; font-size: 18px"></span>
+    </div>
+
+    <div class ="row">
+    <div class ="main"><img src="/static/images/poster2.jpeg" alt="kamtchi"/>
+        <p style="color: blue; font-weight: bold; font-size: 15px;">Om Sri Gurubyo Namaha::</p>
+    </div>
+    
+    <div class ="main">
+    <p>
+        <h3>What We DO Here</h3>
+        <ol style="color:chocolate; font-family: Arial, Helvetica, sans-serif;">
+            <li> Service is our Main Moto.</li><br>
+            <li> All Vaidikas are fully Qualified to perform</li> 
+                 all Hindu Events.</li><br><br>
+            <li>Our Vaithikas will charge you a very nominal</li>
+                 rate compared others.</li><br><br>
+            <li>We do best Catering Service according to the</li>
+                 Client Satisfaction.</li><br><br>
+            <li>For Ordering to avail our Catering Services</li> 
+                 we request you toorder one day before</li>
+                  the Event occurs.</li><br><br>
+        </ol>
+    </p>
+    </div>
+
+    <div class ="main">
+    <p>
+        <h3>What You Have Do Here</h3>
+        <ol style="color: blue; ">
+            <li>You have to Register your Details Here.</li><br><br>
+               
+            <li>Login here to continue with our Service.</li><br><br>
+                
+            <li>Mention Event Date,Name and time</li>
+                Required.</li><br><br>
+                
+            <li>Rate our Vaithikas during their Service.</li><br><br>
+                
+            <li>After Rating close your ticket</li>
+                raised by you.</li><br><br>
+                
+        </ol>
+    </p>
+    </div>
+
+    <div class ="main" style="width: 316px;">
+            <h3>Login Page</h3>
+            <form action="{{url_for('login')}}" name="login" method="post">
+                <table name="login" border="3px" frame="box">
+                    <th colspan="2" style="color: blue; font-size: 18px; font-weight: bold;" >Registered User Login Here !...</th>
+                    <tr><td align="right" bgcolor="brown" style="color: ghostwhite; font-weight: bold;">User Id   :</td> <td><input type="text" name="mobno"  required placeholder="Registered Mobile No." autofocus></td></tr>
+                    <tr><td align="right" bgcolor="brown" style="color: ghostwhite;font-weight: bold;">Password  :</td> <td><input type="password" name="password"  required placeholder="Password"></td></tr>
+                    <tr><td colspan="2" align="center"><input type="submit" value="Login" name="login"></td></tr>
+                    
+                    <!-- Flashing Message Starts Here  -->
+                    <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %} -->
+                </table>
+                    <!-- Flashing Message Ends Here  -->
+            </form>
+            <br><br><a href="{{url_for('signup')}}" style="background-color: brown; color: ghostwhite;padding: 5px; border-style:double;">New User Sign-UP</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="forgot.php" style="background-color: aqua; color: brown;padding: 5px; border-style:double;">Forgot Password</a>
+            <br><br><br><p style="color: blue; font-weight: bold; font-size: 20px; text-align: center;">Om Nama Shivaya Namaha::</p>
+    </div>
+
+    <div id ="footer">
+        @copy; 2021 Vaithigam.space.  All Right Reserved.
+    </div>
+</body>
+</html>

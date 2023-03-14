@@ -1,0 +1,17 @@
+public url to this calander
+https://calendar.google.com/calendar/embed?src=22b080sncrg4cuqr8k3vik4jjo%40group.calendar.google.com&ctz=Asia%2FKolkata
+
+
+iframe embedded codeing
+
+<iframe src="https://calendar.google.com/calendar/embed?src=22b080sncrg4cuqr8k3vik4jjo%40group.calendar.google.com&ctz=Asia%2FKolkata" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+
+basic ical format
+
+https://calendar.google.com/calendar/ical/22b080sncrg4cuqr8k3vik4jjo%40group.calendar.google.com/private-b3c952dc3402b38fd3741165771250b4/basic.ics
+
+
+
+Shareable link to your calander
+https://calendar.google.com/calendar/u/0?cid=MjJiMDgwc25jcmc0Y3VxcjhrM3ZpazRqam9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
